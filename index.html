@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
 <title>Twina — توينا | مطعم ومتنزه مأكولات بحرية في جدة</title>
 <meta name="description" content="Twina Park &amp; Seafood — تجربة بحرية فاخرة في جدة: مأكولات بحرية طازجة، مشاوي على النار، وأجواء راقية بإطلالة الغروب. احجز طاولتك.">
 <meta name="keywords" content="Twina, توينا, مطعم بحر جدة, مأكولات بحرية, Seafood Jeddah, Prince Sultan, sea view restaurant">
 <meta property="og:title" content="Twina — توينا | Park &amp; Seafood Restaurant Jeddah">
 <meta property="og:description" content="Seafood elevated. مأكولات بحرية بمعايير المطاعم العالمية — في جدة، على البحر الأحمر.">
-<link rel="preload" href="https://twina.net/wp-content/uploads/2023/06/new-logo.jpg" as="image">
+<link rel="preload" href="./assets/twina-new-logo.jpg" as="image">
 <meta property="og:image" content="https://twina.net/wp-content/uploads/2023/06/new-logo.jpg">
-<link rel="icon" href="https://twina.net/wp-content/uploads/2023/09/favicon.png" sizes="32x32">
-<link rel="apple-touch-icon" href="https://twina.net/wp-content/uploads/2023/09/favicon.png">
+<link rel="icon" href="./assets/twina-favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="./assets/twina-favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_SA">
 <meta property="og:locale:alternate" content="en_US">
@@ -45,9 +46,9 @@
   --header-h: 5rem;
   --twina-navy: #0a1628;
   --twina-navy-light: #0f1f35;
-  /* Brand marks load from official twina.net URLs so deploy/GitHub Pages never 404 */
-  --twina-mark: url("https://twina.net/wp-content/uploads/2023/09/favicon.png");
-  --twina-logo-full: url("https://twina.net/wp-content/uploads/2023/06/new-logo.jpg");
+  /* Local ./assets marks — twina.net blocks hotlinks (403) when Referer is another domain */
+  --twina-mark: url("./assets/twina-favicon.png");
+  --twina-logo-full: url("./assets/twina-new-logo.jpg");
   --twina-logo-src: var(--twina-logo-full);
 }
 .visually-hidden {
@@ -1518,7 +1519,7 @@ footer {
         </defs>
         <ellipse cx="100" cy="100" rx="88" ry="84" fill="none" stroke="url(#loaderGrad)" stroke-width="2.25" stroke-dasharray="14 22" stroke-linecap="round" transform="rotate(-14 100 100)"/>
       </svg>
-      <img class="loader-logo-img twina-logo-img" src="https://twina.net/wp-content/uploads/2023/06/new-logo.jpg" alt="Twina — توينا" width="220" height="302" decoding="async" fetchpriority="high">
+      <img class="loader-logo-img twina-logo-img" src="./assets/twina-new-logo.jpg" alt="Twina — توينا" width="220" height="302" decoding="async" fetchpriority="high">
       <span class="loader-glint" aria-hidden="true"></span>
     </div>
     <div class="loader-sub">جدة · البحر الأحمر</div>
@@ -1528,7 +1529,7 @@ footer {
 <header id="site-header">
   <div class="nav-inner">
     <a class="logo-lockup logo-lockup--principal" href="#hero" data-smooth aria-label="Twina توينا — الرئيسية">
-      <img class="nav-logo-principal twina-logo-img" src="https://twina.net/wp-content/uploads/2023/06/new-logo.jpg" alt="Twina — توينا" width="220" height="302" decoding="async" fetchpriority="high">
+      <img class="nav-logo-principal twina-logo-img" src="./assets/twina-new-logo.jpg" alt="Twina — توينا" width="220" height="302" decoding="async" fetchpriority="high">
     </a>
     <nav>
       <ul class="nav-links">
@@ -1564,7 +1565,7 @@ footer {
       <div class="hero-badge"><i class="fa-solid fa-fish-fins" aria-hidden="true"></i> جدة — البحر الأحمر</div>
       <div class="hero-principal-slab">
         <div class="hero-principal-frame">
-          <img class="hero-principal-img twina-logo-img" src="https://twina.net/wp-content/uploads/2023/06/new-logo.jpg" alt="Twina — توينا، مأكولات بحرية" width="220" height="302" decoding="async" fetchpriority="high">
+          <img class="hero-principal-img twina-logo-img" src="./assets/twina-new-logo.jpg" alt="Twina — توينا، مأكولات بحرية" width="220" height="302" decoding="async" fetchpriority="high">
         </div>
         <p class="hero-principal-caption"><span>الشعار الرسمي</span><span class="hero-principal-caption__dot">·</span><span dir="ltr">Brand mark</span></p>
       </div>
@@ -1625,7 +1626,7 @@ footer {
           <text x="200" y="220" text-anchor="middle" fill="url(#g1)" font-family="El Messiri, serif" font-size="112" font-weight="700" opacity="0.12">بحر</text>
           <circle cx="200" cy="130" r="6" fill="#d4af37" opacity="0.6"/>
         </svg>
-        <img class="decor-watermark twina-logo-img" src="https://twina.net/wp-content/uploads/2023/06/new-logo.jpg" alt="" width="220" height="302" loading="lazy" decoding="async">
+        <img class="decor-watermark twina-logo-img" src="./assets/twina-new-logo.jpg" alt="" width="220" height="302" loading="lazy" decoding="async">
         <div class="decor-tag">المحمدية — اختر سمكتك من العرض</div>
       </div>
       <div>
@@ -1930,7 +1931,7 @@ footer {
 <footer>
   <div class="footer-inner">
     <div class="footer-brand logo-lockup logo-lockup--foot">
-      <img class="footer-logo-principal twina-logo-img" src="https://twina.net/wp-content/uploads/2023/06/new-logo.jpg" alt="Twina — توينا" width="220" height="302" decoding="async" loading="lazy">
+      <img class="footer-logo-principal twina-logo-img" src="./assets/twina-new-logo.jpg" alt="Twina — توينا" width="220" height="302" decoding="async" loading="lazy">
       <span class="footer-tag">أطيب ما يخرج من البحر</span>
     </div>
     <div class="socials" aria-label="وسائل التواصل">
