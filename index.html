@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twina — توينا | مطعم ومتنزه مأكولات بحرية في جدة</title>
+<meta name="description" content="Twina Park &amp; Seafood — تجربة بحرية فاخرة في جدة: مأكولات بحرية طازجة، مشاوي على النار، وأجواء راقية بإطلالة الغروب. احجز طاولتك.">
+<meta name="keywords" content="Twina, توينا, مطعم بحر جدة, مأكولات بحرية, Seafood Jeddah, Prince Sultan, sea view restaurant">
+<meta property="og:title" content="Twina — توينا | Park &amp; Seafood Restaurant Jeddah">
+<meta property="og:description" content="Seafood elevated. مأكولات بحرية بمعايير المطاعم العالمية — في جدة، على البحر الأحمر.">
+<link rel="preload" href="assets/twina-new-logo.jpg" as="image">
+<meta property="og:image" content="https://twina.net/wp-content/uploads/2023/06/new-logo.jpg">
+<link rel="icon" href="assets/twina-favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/twina-favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="dns-prefetch" href="https://twina.net">
+<link rel="preconnect" href="https://twina.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=El+Messiri:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+:root {
+  --bg-void: #070605;
+  --bg-deep: #0e0c09;
+  --bg-card: #14110d;
+  --bg-elevated: #1b1712;
+  --gold: #d4af37;
+  --gold-bright: #f0d78c;
+  --gold-dark: #8a7028;
+  --amber: #c9952d;
+  --copper: #b87333;
+  --mist: #f4efe6;
+  --muted: #a89f8f;
+  --line: rgba(212, 175, 55, 0.18);
+  --glow: rgba(240, 215, 140, 0.35);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display-ar: "El Messiri", serif;
+  --font-body: "Tajawal", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-wordmark: "Outfit", system-ui, sans-serif;
+  --header-h: 5rem;
+  --twina-navy: #0a1628;
+  --twina-navy-light: #0f1f35;
+  /* Official marks (same files as twina.net — copied under ./assets/) */
+  --twina-mark: url("assets/twina-favicon.png");
+  --twina-logo-full: url("assets/twina-new-logo.jpg");
+  --twina-logo-src: var(--twina-logo-full);
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.twina-logo-img {
+  display: block;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+}
+body {
+  font-family: var(--font-body);
+  background: var(--bg-void);
+  color: var(--mist);
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background: rgba(212, 175, 55, 0.35);
+  color: #fff;
+}
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold-dark), var(--gold));
+  border-radius: 999px;
+  border: 2px solid var(--bg-deep);
+}
+/* Loader */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 30%, #2a2318 0%, #070605 55%);
+  transition: opacity 0.8s var(--ease-out), visibility 0.8s;
+  pointer-events: none;
+}
+#loader.hide { opacity: 0; visibility: hidden; }
+.loader-inner { text-align: center; }
+.loader-brand {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(88vw, 300px);
+  min-height: 160px;
+  margin: 0 auto;
+  animation: loaderIn 1.1s var(--ease-out) forwards;
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+}
+.loader-ring {
+  position: absolute;
+  width: 108%;
+  height: 108%;
+  animation: ringSpin 10s linear infinite;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.35));
+}
+.loader-ring ellipse {
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.25));
+}
+@keyframes ringSpin {
+  to { transform: rotate(-360deg); }
+}
+.loader-logo-img {
+  position: relative;
+  z-index: 2;
+  max-height: min(38vh, 200px);
+  width: auto;
+  max-width: min(72vw, 260px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 50px rgba(0,0,0,0.65));
+  transition: filter 0.4s;
+}
+.loader-glint {
+  position: absolute;
+  inset: 12% 18%;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255,255,255,0.12) 48%,
+    rgba(255,248,220,0.22) 50%,
+    transparent 54%
+  );
+  background-size: 200% 200%;
+  animation: glintMove 2.2s ease-in-out infinite;
+  mix-blend-mode: soft-light;
+  mask-image: var(--twina-logo-src);
+  mask-mode: luminance;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: var(--twina-logo-src);
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  opacity: 0.45;
+}
+@keyframes glintMove {
+  0%, 100% { background-position: 120% 50%; }
+  50% { background-position: -20% 50%; }
+}
+.loader-sub {
+  font-family: var(--font-display-ar);
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  letter-spacing: 0.25em;
+  animation: fadeUp 0.9s var(--ease-out) 0.2s forwards;
+  opacity: 0;
+}
+@keyframes loaderIn {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Nav */
+#site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9000;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  transition: background 0.45s var(--ease-out), box-shadow 0.45s, backdrop-filter 0.45s;
+}
+#site-header.solid {
+  background: rgba(10, 9, 7, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.logo-lockup--principal {
+  max-width: min(52vw, 220px);
+  gap: 0;
+}
+.nav-logo-principal {
+  height: 52px;
+  width: auto;
+  max-width: 168px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 6px 28px rgba(0,0,0,0.45));
+  transition: filter 0.35s, height 0.35s var(--ease-out);
+}
+.logo-lockup--principal:hover .nav-logo-principal {
+  filter: drop-shadow(0 10px 36px rgba(212, 175, 55, 0.18));
+}
+#site-header.solid .nav-logo-principal {
+  height: 46px;
+  max-width: 150px;
+}
+.logo-lockup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.35s var(--ease-out);
+  max-width: min(72vw, 320px);
+}
+.logo-lockup:hover { transform: translateY(-2px); }
+.logo-mark-chip {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  background: linear-gradient(180deg, var(--twina-navy-light), var(--twina-navy));
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 28px rgba(0,0,0,0.45);
+  transition: box-shadow 0.4s, border-color 0.35s, transform 0.35s var(--ease-out);
+}
+.logo-lockup:hover .logo-mark-chip {
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 14px 36px rgba(0,0,0,0.5), 0 0 24px rgba(212, 175, 55, 0.12);
+}
+#site-header.solid .logo-mark-chip {
+  border-color: rgba(212, 175, 55, 0.22);
+}
+.logo-mark-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
+#site-header.solid .logo-mark-chip { width: 42px; height: 42px; }
+#site-header.solid .logo-mark-img { width: 28px; height: 28px; }
+.logo-wordstack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.05;
+  gap: 0.1rem;
+  min-width: 0;
+}
+.logo-word-en {
+  font-family: var(--font-wordmark);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  color: var(--mist);
+}
+.logo-word-ar {
+  font-family: var(--font-display-ar);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #9a9185;
+  letter-spacing: 0.04em;
+}
+.logo-tag {
+  font-family: var(--font-display-ar);
+  font-size: 0.58rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  opacity: 0.92;
+  display: none;
+  max-width: 8.5rem;
+  border-inline-start: 2px solid rgba(212, 175, 55, 0.35);
+  padding-inline-start: 0.5rem;
+}
+@media (min-width: 620px) {
+  .logo-tag { display: block; }
+}
+.footer-mark-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+.logo-mark-chip--lg {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+}
+.logo-mark-chip--lg .logo-mark-img {
+  width: 48px;
+  height: 48px;
+}
+.footer-wordstack .logo-word-en { font-size: 1.65rem; }
+.footer-wordstack .logo-word-ar { font-size: 0.9rem; }
+.footer-tag {
+  font-family: var(--font-display-ar);
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-top: 0.15rem;
+  display: block;
+  text-align: center;
+}
+.nav-links {
+  display: none;
+  list-style: none;
+  gap: 1.75rem;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .nav-links { display: flex; }
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  position: relative;
+  padding: 0.35rem 0;
+  transition: color 0.3s;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--amber));
+  transition: width 0.35s var(--ease-out);
+}
+.nav-links a:hover { color: var(--gold-bright); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--bg-void);
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: transform 0.3s, box-shadow 0.35s;
+  box-shadow: 0 8px 28px rgba(212, 175, 55, 0.22);
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(212, 175, 55, 0.35);
+}
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-inline-start: auto;
+}
+@media (min-width: 900px) { .menu-toggle { display: none; } }
+.menu-toggle span {
+  width: 26px;
+  height: 2px;
+  background: var(--gold);
+  transition: transform 0.35s, opacity 0.35s;
+}
+.menu-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  top: var(--header-h);
+  background: rgba(7,6,5,0.97);
+  z-index: 8999;
+  padding: 2rem;
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-top: 1px solid var(--line);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.4s var(--ease-out), opacity 0.4s;
+  pointer-events: none;
+}
+.mobile-drawer.open {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-drawer a {
+  color: var(--mist);
+  text-decoration: none;
+  font-family: var(--font-display-ar);
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.75rem;
+  transition: color 0.3s, padding-inline-start 0.3s;
+}
+.mobile-drawer a:hover { color: var(--gold); padding-inline-start: 0.5rem; }
+/* Hero */
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    linear-gradient(125deg, rgba(12, 10, 8, 0.92) 0%, rgba(7, 6, 5, 0.75) 45%, rgba(20, 16, 12, 0.85) 100%),
+    url("https://twina.net/wp-content/uploads/2023/08/Twina-Main.jpg") center/cover no-repeat;
+  filter: saturate(1.05) contrast(1.05);
+  animation: heroZoom 28s ease-in-out infinite alternate;
+  z-index: -2;
+}
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 50% at 70% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(184, 115, 51, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, transparent 0%, rgba(7, 6, 5, 0.92) 100%);
+  animation: aurora 14s ease-in-out infinite alternate;
+}
+@keyframes aurora {
+  0% { opacity: 0.75; filter: saturate(1.05); }
+  100% { opacity: 0.95; filter: saturate(1.1); }
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: calc(var(--header-h) + 2rem) clamp(1.25rem, 5vw, 3rem) 4rem;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  animation: heroFade 1s var(--ease-out) 0.15s forwards;
+}
+.hero-principal-slab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0 auto 2rem;
+  max-width: 24rem;
+  opacity: 0;
+  animation: heroFade 1.05s var(--ease-out) 0.22s forwards;
+}
+.hero-principal-frame {
+  padding: 0.55rem 0.85rem 0.65rem;
+  border-radius: 1rem;
+  background: linear-gradient(155deg, rgba(24, 20, 16, 0.88), rgba(8, 7, 5, 0.55));
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.hero-principal-img {
+  display: block;
+  max-height: clamp(6rem, 15vw, 9rem);
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  filter: drop-shadow(0 16px 42px rgba(0, 0, 0, 0.55));
+}
+.hero-principal-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(240, 215, 140, 0.95);
+  margin: 0;
+}
+.hero-principal-caption__dot {
+  opacity: 0.45;
+  font-weight: 300;
+}
+.hero-editorial {
+  position: relative;
+  opacity: 0;
+  animation: heroFade 1.15s var(--ease-out) 0.32s forwards;
+  max-width: min(56rem, 94vw);
+  margin-inline: auto;
+  padding: clamp(0.5rem, 2vw, 1.5rem) 0;
+}
+.hero-editorial__fx {
+  position: absolute;
+  inset: -18% -14%;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-beam {
+  position: absolute;
+  top: -25%;
+  width: 2px;
+  height: 150%;
+  background: linear-gradient(180deg, transparent 0%, rgba(240, 215, 140, 0.45) 38%, rgba(212, 175, 55, 0.12) 72%, transparent 100%);
+  opacity: 0.35;
+  animation: beamSweep 8s ease-in-out infinite;
+  filter: blur(0.3px);
+}
+.hero-beam--1 { left: 10%; animation-delay: 0s; }
+.hero-beam--2 { left: 50%; margin-left: -1px; animation-delay: 2.8s; opacity: 0.22; width: 1px; }
+.hero-beam--3 { right: 10%; left: auto; animation-delay: 5.4s; }
+@keyframes beamSweep {
+  0%, 100% { opacity: 0.12; transform: scaleY(0.88); }
+  50% { opacity: 0.55; transform: scaleY(1); }
+}
+.hero-ring-soft {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: min(92vw, 30rem);
+  height: min(92vw, 30rem);
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(212, 175, 55, 0.09);
+  border-radius: 50%;
+  box-shadow: 0 0 80px rgba(212, 175, 55, 0.06);
+}
+.hero-shard {
+  position: absolute;
+  width: 120%;
+  height: 1px;
+  left: -10%;
+  top: 38%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.22), transparent);
+  opacity: 0.5;
+  transform: rotate(-3deg);
+}
+.hero-editorial__core {
+  position: relative;
+  z-index: 2;
+}
+.hero-editorial__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.18);
+}
+@media (min-width: 640px) {
+  .hero-editorial__row {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 2.5rem;
+    align-items: start;
+  }
+  .hero-col-ar {
+    text-align: right;
+    padding-inline-end: 1.25rem;
+  }
+  .hero-col-en {
+    text-align: left;
+    padding-inline-start: 1.25rem;
+    border-inline-start: 1px solid rgba(212, 175, 55, 0.22);
+  }
+  .hero-ar-line {
+    margin-inline: 0;
+  }
+}
+.hero-col-en {
+  text-align: center;
+}
+.hero-col-ar {
+  text-align: center;
+}
+.hero-en-brand {
+  font-family: var(--font-wordmark);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 3.2vw, 1.7rem);
+  letter-spacing: 0.06em;
+  color: var(--mist);
+  display: block;
+}
+.hero-en-byline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
+  color: var(--muted);
+  display: block;
+  margin-top: 0.45rem;
+  line-height: 1.4;
+}
+.hero-ar-line {
+  font-family: var(--font-display-ar);
+  font-size: clamp(1.02rem, 2.6vw, 1.35rem);
+  font-weight: 500;
+  color: rgba(244, 239, 230, 0.9);
+  line-height: 1.75;
+  max-width: 22rem;
+  margin-inline: auto;
+}
+.hero-float-pin {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: rgba(7, 6, 5, 0.55);
+  backdrop-filter: blur(10px);
+  opacity: 0.9;
+  text-decoration: none;
+}
+a.hero-float-pin:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  color: var(--gold-bright);
+}
+.hero-float-pin i { font-size: 0.75rem; opacity: 0.9; }
+.hero-float-pin--tl {
+  top: 0;
+  right: 0;
+}
+.hero-float-pin--br {
+  bottom: 0;
+  left: 0;
+  letter-spacing: 0.12em;
+}
+@media (max-width: 639px) {
+  .hero-float-pin { display: none; }
+}
+.hero-tagline {
+  max-width: 36rem;
+  margin: 1.75rem auto 0;
+  font-size: 1.05rem;
+  color: var(--muted);
+  opacity: 0;
+  animation: heroFade 1s var(--ease-out) 0.55s forwards;
+}
+.hero-tagline .en {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(244, 239, 230, 0.85);
+  margin-top: 0.5rem;
+  direction: ltr;
+}
+@keyframes heroFade {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-cta-row {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  opacity: 0;
+  animation: heroFade 1s var(--ease-out) 0.65s forwards;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1rem 1.75rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.35s, background 0.3s, color 0.3s;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-bright), var(--amber));
+  color: #1a1305;
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.28);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 48px rgba(212, 175, 55, 0.4);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--mist);
+  border: 1px solid var(--line);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+  transform: translateY(-3px);
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  z-index: 3;
+  animation: floaty 3s ease-in-out infinite;
+}
+.hero-scroll i { font-size: 1rem; color: var(--gold); }
+@keyframes floaty {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+/* Section shared */
+section {
+  position: relative;
+  padding: clamp(4rem, 10vw, 7rem) clamp(1.25rem, 4vw, 3rem);
+}
+.section-head {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.section-title {
+  font-family: var(--font-display-ar);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  color: var(--mist);
+  line-height: 1.25;
+}
+.section-title span.en {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.45em;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  direction: ltr;
+}
+.lead {
+  color: var(--muted);
+  margin-top: 1rem;
+  font-size: 1.05rem;
+}
+/* Reveal */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(36px);
+}
+.reveal-init.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+}
+.stagger-children > * { opacity: 0; transform: translateY(24px); }
+.stagger-children.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
+}
+.stagger-children.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger-children.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+.stagger-children.is-visible > *:nth-child(3) { transition-delay: 0.19s; }
+.stagger-children.is-visible > *:nth-child(4) { transition-delay: 0.26s; }
+.page-stagger > * { opacity: 0; transform: translateY(20px); animation: pageIn 0.9s var(--ease-out) forwards; }
+.page-stagger > *:nth-child(1) { animation-delay: 0.15s; }
+.page-stagger > *:nth-child(2) { animation-delay: 0.28s; }
+.page-stagger > *:nth-child(3) { animation-delay: 0.4s; }
+.page-stagger > *:nth-child(4) { animation-delay: 0.52s; }
+.page-stagger > *:nth-child(5) { animation-delay: 0.64s; }
+@keyframes pageIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+/* About */
+#about {
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+    var(--bg-deep);
+}
+.about-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .about-grid { grid-template-columns: 1fr 1.05fr; }
+}
+.decor-panel {
+  position: relative;
+  aspect-ratio: 4/5;
+  max-height: 520px;
+  border-radius: 1.25rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, var(--bg-card) 0%, #0a0907 100%);
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+}
+.decor-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  z-index: 0;
+  filter: saturate(1.08) contrast(1.04);
+  transition: opacity 0.6s var(--ease-out), transform 10s ease-out;
+}
+.decor-panel--venue:hover .decor-photo {
+  opacity: 0.5;
+  transform: scale(1.03);
+}
+.decor-watermark {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  max-height: 44%;
+  width: auto;
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 2;
+}
+.decor-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.08), transparent 55%);
+  z-index: 3;
+  pointer-events: none;
+}
+.decor-svg {
+  position: absolute;
+  inset: 10%;
+  width: auto;
+  height: 80%;
+  opacity: 0.9;
+  z-index: 1;
+  pointer-events: none;
+}
+.decor-panel--venue .decor-svg {
+  opacity: 0.55;
+}
+.decor-tag {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(10, 9, 7, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  font-family: var(--font-display-ar);
+  font-size: 1rem;
+  color: var(--gold-bright);
+  text-align: center;
+  z-index: 5;
+}
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.stat {
+  text-align: center;
+  padding: 1.25rem 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--line);
+  background: rgba(20, 17, 13, 0.65);
+  transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+}
+.stat:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+.stat-num {
+  font-family: var(--font-display-ar);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+  line-height: 1;
+}
+.stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.4rem; }
+.body-serif {
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  color: rgba(244, 239, 230, 0.9);
+  line-height: 1.85;
+}
+.body-serif.en { direction: ltr; text-align: start; margin-top: 1rem; font-style: italic; color: var(--muted); }
+/* Full-bleed Twina photo band */
+.twina-strip {
+  position: relative;
+  padding: 0 !important;
+  min-height: 46vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.twina-strip-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  animation: stripKen 28s ease-in-out infinite alternate;
+}
+@keyframes stripKen {
+  from { transform: scale(1.06) translate(-1.2%, 0); }
+  to { transform: scale(1.12) translate(1%, 0); }
+}
+.twina-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(7,6,5,0.93) 0%, rgba(10, 22, 40, 0.35) 48%, rgba(7,6,5,0.92) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.twina-strip-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(3.25rem, 9vw, 5.5rem) clamp(1.25rem, 4vw, 3rem);
+  text-align: center;
+}
+.strip-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  display: block;
+  margin-bottom: 1rem;
+}
+.strip-quote {
+  font-family: var(--font-display-ar);
+  font-size: clamp(1.05rem, 2.8vw, 1.42rem);
+  font-weight: 500;
+  line-height: 1.9;
+  color: var(--mist);
+}
+.strip-note {
+  display: block;
+  margin-top: 1.1rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(168, 159, 143, 0.95);
+}
+/* Menu */
+#menu { background: var(--bg-void); }
+.menu-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+.tab-btn {
+  font-family: var(--font-display-ar);
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.35s var(--ease-out);
+}
+.tab-btn:hover { color: var(--gold-bright); border-color: rgba(212, 175, 55, 0.5); }
+.tab-btn.active {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(184, 115, 51, 0.12));
+  border-color: var(--gold);
+  color: var(--mist);
+  box-shadow: 0 8px 28px rgba(212, 175, 55, 0.12);
+}
+.menu-panel { display: none; }
+.menu-panel.active { display: block; animation: panelIn 0.5s var(--ease-out); }
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 640px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .menu-grid { grid-template-columns: repeat(3, 1fr); } }
+.dish-card {
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--bg-card);
+  transition: transform 0.45s var(--ease-out), box-shadow 0.45s, border-color 0.35s;
+}
+.dish-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.45), 0 0 40px var(--glow);
+}
+.dish-visual {
+  position: relative;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+.dish-visual--menuph {
+  background-size: cover;
+  background-position: center 38%;
+}
+.dish-shot-tag {
+  position: absolute;
+  top: 0.55rem;
+  inset-inline-start: 0.55rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: var(--gold-bright);
+  background: rgba(7, 6, 5, 0.78);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  max-width: calc(100% - 1.1rem);
+}
+.dish-shot-tag i { font-size: 0.62rem; opacity: 0.9; }
+.dish-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7,6,5,0.1) 0%, rgba(7,6,5,0.92) 100%);
+  transition: opacity 0.35s;
+}
+.dish-card:hover .dish-visual::before { opacity: 0.85; }
+.dish-body { padding: 1.35rem 1.25rem 1.5rem; }
+.dish-name-ar { font-family: var(--font-display-ar); font-size: 1.15rem; font-weight: 600; color: var(--mist); }
+.dish-name-en {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--muted);
+  direction: ltr;
+  text-align: right;
+  margin-top: 0.25rem;
+}
+.dish-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+.dish-price {
+  font-family: var(--font-display-ar);
+  font-weight: 700;
+  color: var(--gold-bright);
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+.dish-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+/* Gallery */
+#experience {
+  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-void) 100%);
+}
+.masonry {
+  max-width: 1200px;
+  margin: 0 auto;
+  column-count: 1;
+  column-gap: 1.25rem;
+}
+@media (min-width: 640px) { .masonry { column-count: 2; } }
+@media (min-width: 1024px) { .masonry { column-count: 3; } }
+.m-item {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: transform 0.45s var(--ease-out), box-shadow 0.45s;
+}
+.m-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.45);
+  z-index: 2;
+}
+.m-item img {
+  width: 100%;
+  display: block;
+  height: auto;
+  transition: transform 0.7s var(--ease-out);
+}
+.m-item:hover img { transform: scale(1.08); }
+.m-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(7,6,5,0.92) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+  opacity: 0.92;
+  transition: opacity 0.35s;
+}
+.m-item:hover .m-overlay { opacity: 1; }
+.m-tag {
+  align-self: flex-start;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--line);
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+.m-title { font-family: var(--font-display-ar); font-size: 1.05rem; color: var(--mist); }
+.m-sub { font-family: var(--font-serif); font-style: italic; font-size: 0.85rem; color: var(--muted); direction: ltr; text-align: right; margin-top: 0.2rem; }
+/* Reservation */
+#reserve {
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+    #050403;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.reserve-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (min-width: 900px) { .reserve-grid { grid-template-columns: 0.9fr 1.1fr; } }
+.reserve-copy .section-title { text-align: right; }
+.form {
+  display: grid;
+  gap: 1rem;
+}
+.form label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+.form input, .form select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  color: var(--mist);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form input:focus, .form select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 520px) { .form-row-2 { grid-template-columns: 1fr 1fr; } }
+.btn-block { width: 100%; margin-top: 0.5rem; }
+/* Testimonials */
+#stories { background: var(--bg-deep); }
+.carousel-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, var(--bg-card), #0c0a08);
+  padding: clamp(2rem, 5vw, 3rem);
+  overflow: hidden;
+  min-height: 280px;
+}
+.carousel-track {
+  display: flex;
+  direction: ltr;
+  transition: transform 0.7s var(--ease-out);
+}
+.t-slide {
+  flex: 0 0 100%;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+.stars { color: var(--gold); margin-bottom: 1rem; letter-spacing: 0.15em; }
+.quote-ar {
+  font-family: var(--font-display-ar);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--mist);
+}
+.quote-en {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  direction: ltr;
+  text-align: left;
+}
+.t-author {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: var(--gold-bright);
+  letter-spacing: 0.05em;
+}
+.t-role { font-size: 0.85rem; color: var(--muted); margin-top: 0.25rem; }
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.carousel-dots button {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: var(--line);
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+.carousel-dots button.active {
+  background: var(--gold);
+  transform: scale(1.25);
+}
+/* Contact */
+#contact { background: var(--bg-void); }
+.contact-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 960px) { .contact-grid { grid-template-columns: 1fr 1.2fr; } }
+.info-card {
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  padding: 2rem;
+  background: var(--bg-card);
+}
+.info-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+.info-row:last-child { margin-bottom: 0; }
+.info-row i {
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-top: 0.2rem;
+  width: 1.5rem;
+  text-align: center;
+}
+.info-row a { color: var(--mist); text-decoration: none; transition: color 0.3s; }
+.info-row a:hover { color: var(--gold-bright); }
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+}
+.hours-table th, .hours-table td {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+}
+.hours-table th { color: var(--muted); font-weight: 500; width: 42%; }
+.map-frame {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  min-height: 320px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+}
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  border: 0;
+  filter: saturate(0.85) contrast(1.05);
+  transition: filter 0.4s;
+}
+.map-frame:hover iframe { filter: saturate(1.05) contrast(1.08); }
+/* Footer */
+footer {
+  background: #030201;
+  padding: 3.5rem clamp(1.25rem, 4vw, 3rem) 2.5rem;
+  border-top: 1px solid var(--line);
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+.footer-inner .logo-lockup {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: none;
+}
+.logo-lockup--foot .footer-logo-principal {
+  max-height: clamp(132px, 20vw, 196px);
+  width: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 14px 36px rgba(0, 0, 0, 0.5));
+}
+.logo-lockup--foot .footer-tag { margin-top: 0.7rem; }
+.socials {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.socials a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.35s var(--ease-out);
+}
+.socials a:hover {
+  color: var(--bg-void);
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.25);
+}
+.footer-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.9;
+}
+.footer-meta a { color: var(--gold); text-decoration: none; }
+.footer-meta a:hover { text-decoration: underline; }
+/* WhatsApp float */
+.wa-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  left: auto;
+  z-index: 9500;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.65rem;
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.35);
+  animation: waPulse 2.2s ease-in-out infinite;
+  transition: transform 0.3s;
+}
+.wa-float:hover { transform: scale(1.08); }
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 12px 32px rgba(37, 211, 102, 0.35); }
+  50% { box-shadow: 0 12px 48px rgba(37, 211, 102, 0.55), 0 0 0 0 rgba(37, 211, 102, 0.4); }
+}
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .loader-ring,
+  .hero-beam,
+  .loader-glint,
+  .twina-strip-bg {
+    animation: none !important;
+  }
+}
+</style>
+</head>
+<body>
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-brand">
+      <svg class="loader-ring" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <linearGradient id="loaderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f0d78c"/>
+            <stop offset="45%" stop-color="#d4af37"/>
+            <stop offset="100%" stop-color="#8a7028"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="100" rx="88" ry="84" fill="none" stroke="url(#loaderGrad)" stroke-width="2.25" stroke-dasharray="14 22" stroke-linecap="round" transform="rotate(-14 100 100)"/>
+      </svg>
+      <img class="loader-logo-img twina-logo-img" src="assets/twina-new-logo.jpg" alt="Twina — توينا" width="220" height="302" decoding="async" fetchpriority="high">
+      <span class="loader-glint" aria-hidden="true"></span>
+    </div>
+    <div class="loader-sub">جدة · البحر الأحمر</div>
+  </div>
+</div>
+
+<header id="site-header">
+  <div class="nav-inner">
+    <a class="logo-lockup logo-lockup--principal" href="#hero" data-smooth aria-label="Twina توينا — الرئيسية">
+      <img class="nav-logo-principal twina-logo-img" src="assets/twina-new-logo.jpg" alt="Twina — توينا" width="220" height="302" decoding="async" fetchpriority="high">
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about" data-smooth>من نحن</a></li>
+        <li><a href="#menu" data-smooth>القائمة</a></li>
+        <li><a href="#experience" data-smooth>التجربة</a></li>
+        <li><a href="#reserve" data-smooth>الحجز</a></li>
+        <li><a href="#stories" data-smooth>آراء الضيوف</a></li>
+        <li><a href="#contact" data-smooth>تواصل</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#" id="nav-wa"><i class="fab fa-whatsapp" aria-hidden="true"></i> احجز عبر واتساب</a>
+    <button class="menu-toggle" type="button" aria-label="فتح القائمة" id="menu-toggle" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+  <a href="#about" data-smooth>من نحن</a>
+  <a href="#menu" data-smooth>القائمة</a>
+  <a href="#experience" data-smooth>التجربة</a>
+  <a href="#reserve" data-smooth>الحجز</a>
+  <a href="#stories" data-smooth>آراء الضيوف</a>
+  <a href="#contact" data-smooth>تواصل</a>
+</div>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero-aurora" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-content page-stagger">
+      <div class="hero-badge"><i class="fa-solid fa-fish-fins" aria-hidden="true"></i> جدة — البحر الأحمر</div>
+      <div class="hero-principal-slab">
+        <div class="hero-principal-frame">
+          <img class="hero-principal-img twina-logo-img" src="assets/twina-new-logo.jpg" alt="Twina — توينا، مأكولات بحرية" width="220" height="302" decoding="async" fetchpriority="high">
+        </div>
+        <p class="hero-principal-caption"><span>الشعار الرسمي</span><span class="hero-principal-caption__dot">·</span><span dir="ltr">Brand mark</span></p>
+      </div>
+      <h1 class="hero-editorial">
+        <span class="visually-hidden">Twina — توينا، متنزه ومأكولات بحرية، جدة</span>
+        <div class="hero-editorial__fx" aria-hidden="true">
+          <span class="hero-beam hero-beam--1"></span>
+          <span class="hero-beam hero-beam--2"></span>
+          <span class="hero-beam hero-beam--3"></span>
+          <span class="hero-ring-soft"></span>
+          <span class="hero-shard"></span>
+        </div>
+        <a class="hero-float-pin hero-float-pin--tl" href="tel:920028284">9200&nbsp;28284</a>
+        <div class="hero-float-pin hero-float-pin--br" aria-hidden="true"><i class="fa-solid fa-fire-flame-curved"></i><span>نار حيّة</span></div>
+        <div class="hero-editorial__core">
+          <div class="hero-editorial__row">
+            <div class="hero-col-ar">
+              <p class="hero-ar-line">متنزه يختار السمك الطازج يوميًا — موائد نار، وغروب يلبس الذهب على الماء.</p>
+            </div>
+            <div class="hero-col-en" dir="ltr">
+              <span class="hero-en-brand">Twina</span>
+              <span class="hero-en-byline">Park &amp; Seafood — Jeddah waterfront</span>
+            </div>
+          </div>
+        </div>
+      </h1>
+      <p class="hero-tagline">
+        حيث يلتقي أصالة السوق البحري ببراعة المطبخ العالمي.
+        <span class="en">Where Jeddah’s harbor soul meets world-class seafood craft.</span>
+      </p>
+      <div class="hero-cta-row">
+        <a class="btn btn-primary" href="#" id="hero-wa"><i class="fab fa-whatsapp"></i> احجز طاولة</a>
+        <a class="btn btn-ghost" href="#menu" data-smooth>اكتشف قائمتنا</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true"><span>scroll</span><i class="fa-solid fa-chevron-down"></i></div>
+  </section>
+
+  <section id="about">
+    <div class="section-head reveal-init">
+      <span class="eyebrow">القصة</span>
+      <h2 class="section-title">رحلة تبدأ من عشق البحر<span class="en">Born from the Red Sea, forged in fire</span></h2>
+      <p class="lead">رؤية توينا هي تحويل تجربة متنزّه الأسماك التقليدي إلى وجهة فاخرة تقدّم أجود المأكولات البحرية بطرق تُورثت عبر أجيال في جدة — عروس البحر الأحمر.</p>
+    </div>
+    <div class="about-grid">
+      <div class="decor-panel decor-panel--venue reveal-init">
+        <div class="decor-photo" role="img" aria-label="فرع من مطاعم توينا في جدة" style="background-image:url(https://twina.net/wp-content/uploads/2023/08/Muhamadeya-2.jpg)"></div>
+        <svg class="decor-svg" viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#f0d78c"/>
+              <stop offset="50%" style="stop-color:#d4af37"/>
+              <stop offset="100%" style="stop-color:#8a7028"/>
+            </linearGradient>
+          </defs>
+          <path d="M60 420 Q200 80 340 420" fill="none" stroke="url(#g1)" stroke-width="2" opacity="0.35"/>
+          <path d="M40 380 C120 120 280 120 360 380" fill="none" stroke="url(#g1)" stroke-width="1.5" opacity="0.25"/>
+          <text x="200" y="220" text-anchor="middle" fill="url(#g1)" font-family="El Messiri, serif" font-size="112" font-weight="700" opacity="0.12">بحر</text>
+          <circle cx="200" cy="130" r="6" fill="#d4af37" opacity="0.6"/>
+        </svg>
+        <img class="decor-watermark twina-logo-img" src="assets/twina-new-logo.jpg" alt="" width="220" height="302" loading="lazy" decoding="async">
+        <div class="decor-tag">المحمدية — اختر سمكتك من العرض</div>
+      </div>
+      <div>
+        <div class="reveal-init stagger-children">
+          <p class="body-serif">انطلقت توينا من شغف عميق بتحويل فكرة «متنزه الأسماك» إلى منتجع بحري متفرّد يقدّم أرقى المأكولات البحرية بأساليب موروثة، مع فريق طهي يقوده طاهٍ تنفيذي يصنع لك الطبق كما تحب — من أجود الصيد المحلي.</p>
+          <p class="body-serif en">Twina began as a passion project: turning the classic fish park into a refined seafood resort—fire-kissed, fast, and faithful to Jeddah’s coastal heritage.</p>
+          <div class="stats-bar">
+            <div class="stat">
+              <div class="stat-num">+١٥</div>
+              <div class="stat-label">سنوات الخبرة</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">٦٥+</div>
+              <div class="stat-label">عدد الأطباق</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">٩٨٪</div>
+              <div class="stat-label">رضا العملاء</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="twina-strip reveal-init" aria-label="أجواء توينا">
+    <div class="twina-strip-bg" style="background-image:url(https://twina.net/wp-content/uploads/2023/08/Hamraa.jpg)"></div>
+    <div class="twina-strip-inner">
+      <span class="strip-eyebrow">الحمراء · الكورنيش</span>
+      <p class="strip-quote">غروب يجرّ وراءه موائد نار مفتوحة، وسمك يصل يوميًا من أسواق جدة — كما في أفرع ساري والمحمدية.</p>
+      <span class="strip-note" dir="ltr">Twina × Jeddah waterfront</span>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="section-head reveal-init">
+      <span class="eyebrow">القائمة</span>
+      <h2 class="section-title">تشكيلة توينا البحرية<span class="en">Seafood · Grill · Elevated starters</span></h2>
+    </div>
+    <div class="menu-tabs reveal-init" role="tablist" aria-label="فئات القائمة">
+      <button type="button" class="tab-btn active" role="tab" aria-selected="true" data-tab="seafood">مأكولات بحرية</button>
+      <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="grill">مشاوي ونار</button>
+      <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="starters">مقبلات مختارة</button>
+    </div>
+
+    <div class="menu-panel active" id="panel-seafood" role="tabpanel">
+      <div class="menu-grid">
+        <article class="dish-card reveal-init" style="--img:url(https://twina.net/wp-content/uploads/2025/10/9-الأرز-2.jpg)">
+          <div class="dish-visual dish-visual--menuph" style="background-image:var(--img)"><span class="dish-shot-tag"><i class="fa-solid fa-camera" aria-hidden="true"></i> لقطة من تقديم الأطباق</span></div>
+          <div class="dish-body">
+            <h3 class="dish-name-ar">صيادية توينا الملكية</h3>
+            <p class="dish-name-en">Twina Royal Sayadiah</p>
+            <div class="dish-meta"><span class="dish-price">٨٩ ر.س</span></div>
+            <p class="dish-desc">أرز بنّي عميق بنكهة السمك المحمّص، مرق سريّ وسُمك رومانسٍ يذوب في الفم.</p>
+          </div>
+        </article>
+        <article class="dish-card reveal-init" style="--img:url(https://twina.net/wp-content/uploads/2025/10/2-الأسماك-3.jpg)">
+          <div class="dish-visual dish-visual--menuph" style="background-image:var(--img)"><span class="dish-shot-tag"><i class="fa-solid fa-camera" aria-hidden="true"></i> لقطة من تقديم الأطباق</span></div>
+          <div class="dish-body">
+            <h3 class="dish-name-ar">سلمى مشوية بالأعشاب البحرية</h3>
+            <p class="dish-name-en">Herb-Crusted Salmon</p>
+            <div class="dish-meta"><span class="dish-price">١١٢ ر.س</span></div>
+            <p class="dish-desc">قطعة سلمى من أعماق النور، زيت زيتون بكر، ليمون مشوي، ولمسة ذهبية من الثوم.</p>
+          </div>
+        </article>
+        <article class="dish-card reveal-init" style="--img:url(https://twina.net/wp-content/uploads/2025/10/6-الصواني-2.jpg)">
+          <div class="dish-visual dish-visual--menuph" style="background-image:var(--img)"><span class="dish-shot-tag"><i class="fa-solid fa-camera" aria-hidden="true"></i> لقطة من تقديم الأطباق</span></div>
+          <div class="dish-body">
+            <h3 class="dish-name-ar">جمبري بنجر وسّك</h3>
+            <p class="dish-name-en">Jumbo Garlic Prawns</p>
+            <div class="dish-meta"><span class="dish-price">١٤٥ ر.س</span></div>
+            <p class="dish-desc">جمبري واسٍ، زبدة بالثوم المعتّق، رشّة chili حلو، يُقدَّم على نار مكشوفة.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="menu-panel" id="panel-grill" role="tabpanel" hidden>
+      <div class="menu-grid">
+        <article class="dish-card" style="--img:url(https://twina.net/wp-content/uploads/2025/10/1-الأطباق-الرئيسية-1.jpg)">
+          <div class="dish-visual dish-visual--menuph" style="background-image:var(--img)"><span class="dish-shot-tag"><i class="fa-solid fa-camera" aria-hidden="true"></i> لقطة من تقديم الأطباق</span></div>
+          <div class="dish-body">
+            <h3 class="dish-name-ar">ريش حمام مشوي بالطريقة الحجازية</h3>
+            <p class="dish-name-en">Hejazi Grilled Squab</p>
+            <div class="dish-meta"><span class="dish-price">١٥٥ ر.س</span></div>
+            <p class="dish-desc">شوّاء مكثّف، بهارات كامونة خفيفة، تُكمّلها قطرات ليمون محروق.</p>
+          </div>
+        </article>
+        <article class="dish-card" style="--img:url(https://twina.net/wp-content/uploads/2025/10/7-الشكات-4.jpg)">
+          <div class="dish-visual dish-visual--menuph" style="background-image:var(--img)"><span class="dish-shot-tag"><i class="fa-solid fa-camera" aria-hidden="true"></i> لقطة من تقديم الأطباق</span></div>
+          <div class="dish-body">
+            <h3 class="dish-name-ar">سياخ السلطان</h3>
+            <p class="dish-name-en">Sultan Skewers</p>
+            <div class="dish-meta"><span class="dish-price">٩٨ ر.س</span></div>
+            <p class="dish-desc">قطع لحم بحر مشويّة على الفحم الحجازي مع طحينة دافئة وحمص مدخّن.</p>
+          </div>
+        </article>
+        <article class="dish-card" style="--img:url(https://twina.net/wp-content/uploads/2025/10/5-الطواجن-2.jpg)">
+          <div class="dish-visual dish-visual--menuph" style="background-image:var(--img)"><span class="dish-shot-tag"><i class="fa-solid fa-camera" aria-hidden="true"></i> لقطة من تقديم الأطباق</span></div>
+          <div class="dish-body">
+            <h3 class="dish-name-ar">أكتاف أخطبوط بالهريسة</h3>
+            <p class="dish-name-en">Octopus Harissa Char</p>
+            <div class="dish-meta"><span class="dish-price">١٢٨ ر.س</span></div>
+            <p class="dish-desc">نُقوش من التفحيم السريع، هريسة بحرية، ورذاذ زيت الزيتون المُقطّر.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="menu-panel" id="panel-starters" role="tabpanel" hidden>
+      <div class="menu-grid">
+        <article class="dish-card" style="--img:url(https://twina.net/wp-content/uploads/2025/10/4-المقبلات-2.jpg)">
+          <div class="dish-visual dish-visual--menuph" style="background-image:var(--img)"><span class="dish-shot-tag"><i class="fa-solid fa-camera" aria-hidden="true"></i> لقطة من تقديم الأطباق</span></div>
+          <div class="dish-body">
+            <h3 class="dish-name-ar">تارتار تونة حمراء</h3>
+            <p class="dish-name-en">Red Tuna Tartare</p>
+            <div class="dish-meta"><span class="dish-price">٧٨ ر.س</span></div>
+            <p class="dish-desc">يُعصر يدويًا مع زيت الكافيار الأخضر وبذور السمسم المحمّصة.</p>
+          </div>
+        </article>
+        <article class="dish-card" style="--img:url(https://twina.net/wp-content/uploads/2025/10/3-السلطات-4.jpg)">
+          <div class="dish-visual dish-visual--menuph" style="background-image:var(--img)"><span class="dish-shot-tag"><i class="fa-solid fa-camera" aria-hidden="true"></i> لقطة من تقديم الأطباق</span></div>
+          <div class="dish-body">
+            <h3 class="dish-name-ar">سلطة أعشاب البحر</h3>
+            <p class="dish-name-en">Seaglass Herb Salad</p>
+            <div class="dish-meta"><span class="dish-price">٥٢ ر.س</span></div>
+            <p class="dish-desc">خسّ ملكي، أعشاب مدخّنة، حمضيات مشويّة، وصلصة الرمان الذّهبية.</p>
+          </div>
+        </article>
+        <article class="dish-card" style="--img:url(https://twina.net/wp-content/uploads/2026/04/4.jpg)">
+          <div class="dish-visual dish-visual--menuph" style="background-image:var(--img)"><span class="dish-shot-tag"><i class="fa-solid fa-camera" aria-hidden="true"></i> لقطة من تقديم الأطباق</span></div>
+          <div class="dish-body">
+            <h3 class="dish-name-ar">كبة بحر بالكرز الأسود</h3>
+            <p class="dish-name-en">Sea Kibbeh &amp; Cherry</p>
+            <div class="dish-meta"><span class="dish-price">٦٤ ر.س</span></div>
+            <p class="dish-desc">غلاف ذهبي مقرمش، حشوة جمبري، عبير جوزة الطيب والكرز الحامض.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head reveal-init">
+      <span class="eyebrow">المشاهد</span>
+      <h2 class="section-title">تجربة تليق بالغروب<span class="en">Golden hour, every hour</span></h2>
+    </div>
+    <div class="masonry reveal-init">
+      <div class="m-item">
+        <img src="https://twina.net/wp-content/uploads/2023/08/Twina-Main.jpg" alt="توينا — أجواء المطعم" width="800" height="800" loading="lazy">
+        <div class="m-overlay"><span class="m-tag">هوية توينا</span><div class="m-title">Park &amp; Seafood</div><div class="m-sub">لمحة من التجربة المرئية</div></div>
+      </div>
+      <div class="m-item">
+        <img src="https://twina.net/wp-content/uploads/2024/04/1.1.jpg" alt="موائد توينا" width="900" height="600" loading="lazy">
+        <div class="m-overlay"><span class="m-tag">موائد</span><div class="m-title">لقطة من التقديم</div><div class="m-sub">From the pass — same dishes, same craft</div></div>
+      </div>
+      <div class="m-item">
+        <img src="https://twina.net/wp-content/uploads/2023/08/Hamraa.jpg" alt="فرع الحمراء" width="900" height="620" loading="lazy">
+        <div class="m-overlay"><span class="m-tag">فرع</span><div class="m-title">الحمراء · الكورنيش</div><div class="m-sub">Al Hamra — Corniche vibes</div></div>
+      </div>
+      <div class="m-item">
+        <img src="https://twina.net/wp-content/uploads/2023/08/Sari.jpg" alt="فرع ساري" width="900" height="600" loading="lazy">
+        <div class="m-overlay"><span class="m-tag">فرع</span><div class="m-title">ساري · جدة</div><div class="m-sub">Sari Street destination</div></div>
+      </div>
+      <div class="m-item">
+        <img src="https://twina.net/wp-content/uploads/2023/08/Dhban-7.jpg" alt="توينا ذهبان" width="900" height="600" loading="lazy">
+        <div class="m-overlay"><span class="m-tag">فرع</span><div class="m-title">ذهبان</div><div class="m-sub">Dhban waterfront</div></div>
+      </div>
+      <div class="m-item">
+        <img src="https://twina.net/wp-content/uploads/2023/08/Riyadh-7.jpg" alt="توينا الرياض" width="900" height="620" loading="lazy">
+        <div class="m-overlay"><span class="m-tag">فرع</span><div class="m-title">الرياض</div><div class="m-sub">Riyadh — Twina experience</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reserve">
+    <div class="section-head reveal-init">
+      <span class="eyebrow">احجز الآن</span>
+      <h2 class="section-title">نسقّ لك المقعد قبل الغروب<span class="en">We’ll hold your table</span></h2>
+    </div>
+    <div class="reserve-grid">
+      <div class="reserve-copy reveal-init">
+        <p class="lead">أرسل تفاصيل حجزك عبر واتساب — لا خوادم، لا انتظار. فريقنا يؤكد لك الموعد مباشرة.</p>
+        <p class="body-serif" style="margin-top:1rem;">نرحّب بالعائلات، المناسبات، وجولات الأعمال. لحوم حلال، مأكولات بحرية يومية، وخدمة بمستوى المطاعم العالمية.</p>
+      </div>
+      <form class="form reveal-init" id="reserve-form" novalidate>
+        <div>
+          <label for="r-name">الاسم الكريم</label>
+          <input type="text" id="r-name" name="name" required placeholder="مثال: محمد العتيبي" autocomplete="name">
+        </div>
+        <div>
+          <label for="r-phone">رقم الجوال</label>
+          <input type="tel" id="r-phone" name="phone" required placeholder="05xxxxxxxx" autocomplete="tel" inputmode="numeric">
+        </div>
+        <div class="form-row-2">
+          <div>
+            <label for="r-date">التاريخ</label>
+            <input type="date" id="r-date" name="date" required>
+          </div>
+          <div>
+            <label for="r-time">الوقت</label>
+            <input type="time" id="r-time" name="time" required>
+          </div>
+        </div>
+        <div>
+          <label for="r-guests">عدد الأشخاص</label>
+          <select id="r-guests" name="guests" required>
+            <option value="">اختر العدد</option>
+            <option>شخصان</option>
+            <option>3–4 أشخاص</option>
+            <option>5–8 أشخاص</option>
+            <option>9+ (مناسبة)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"><i class="fab fa-whatsapp"></i> إرسال الحجز عبر واتساب</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="stories">
+    <div class="section-head reveal-init">
+      <span class="eyebrow">آراء الضيوف</span>
+      <h2 class="section-title">كلمات تُكتب بعد لقمة أولى<span class="en">Whispers from our guests</span></h2>
+    </div>
+    <div class="carousel-wrap reveal-init">
+      <div class="carousel-track" id="carousel-track">
+        <div class="t-slide">
+          <div class="stars" aria-label="5 من 5">★★★★★</div>
+          <p class="quote-ar">«طبق السياخ كان يعبق بنار الفحم قبل أن يصل — وفعلًا لم نُجبر على الانتظار. توينا لم تعد مجرد مطعم سمك، بل وجهة نُكرّرها كل جمعة.»</p>
+          <p class="quote-en">“Fire-first theatre. Zero wait guilt. Twina is our Friday harbor ritual.”</p>
+          <div class="t-author">نورة القحطاني</div>
+          <div class="t-role">جدة — عائلة</div>
+        </div>
+        <div class="t-slide">
+          <div class="stars" aria-label="5 من 5">★★★★★</div>
+          <p class="quote-ar">«عرض الأسماك يشبه بازار إيطالي فاخر؛ تختار قطعتك، والطاهي يُحوّلها إلى لوحة. الإضاءة والموسيقى يشبهون مطاعم دبي لكن بروح جدة الأصيلة.»</p>
+          <p class="quote-en">“Fish showroom energy with Jeddah soul—this is premium Red Sea life.”</p>
+          <div class="t-author">فيصل الشهري</div>
+          <div class="t-role">رائد أعمال</div>
+        </div>
+        <div class="t-slide">
+          <div class="stars" aria-label="5 من 5">★★★★★</div>
+          <p class="quote-ar">«احتفلنا بخطوبة ابننا في الجلسة الخارجية — الغروب ذهبي، والخدمة تعرف اسمك قبل أن تجلس.»</p>
+          <p class="quote-en">“Golden hour proposal energy—they knew our names before we sat.”</p>
+          <div class="t-author">لينا الحربي</div>
+          <div class="t-role">مناسبة خاصة</div>
+        </div>
+      </div>
+      <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="شرائح الشهادات"></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head reveal-init">
+      <span class="eyebrow">زورنا</span>
+      <h2 class="section-title">جدة — الأمير سلطان<span class="en">AlMohammediyah district</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="info-card reveal-init">
+        <div class="info-row">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          <div>
+            <strong>العنوان</strong>
+            <p style="margin-top:0.35rem;color:var(--muted);">المكتب الرئيسي — المحمدية، شارع الأمير سلطان، جدة، المملكة العربية السعودية</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <div>
+            <strong>الهاتف</strong>
+            <p style="margin-top:0.35rem;"><a href="tel:920028284">9200 28284</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <i class="fa-solid fa-clock" aria-hidden="true"></i>
+          <div>
+            <strong>ساعات العمل</strong>
+            <table class="hours-table">
+              <tbody>
+                <tr><th>السبت — الخميس</th><td>٩ صباحًا — ١١ مساءً</td></tr>
+                <tr><th>الجمعة</th><td>١ ظهرًا — ١١ مساءً</td></tr>
+              </tbody>
+            </table>
+            <p style="font-size:0.85rem;color:var(--muted);margin-top:0.5rem;">حسب التوقيت الرسمي لمدينة جدة.</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <i class="fa-solid fa-globe" aria-hidden="true"></i>
+          <div>
+            <strong>الموقع الإلكتروني</strong>
+            <p style="margin-top:0.35rem;"><a href="https://twina.net/" target="_blank" rel="noopener">twina.net</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="map-frame reveal-init">
+        <iframe title="موقع توينا — جدة" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Mohammediyah%2C+Prince+Sultan+St+Jeddah&amp;hl=ar&amp;z=14&amp;output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand logo-lockup logo-lockup--foot">
+      <img class="footer-logo-principal twina-logo-img" src="assets/twina-new-logo.jpg" alt="Twina — توينا" width="220" height="302" decoding="async" loading="lazy">
+      <span class="footer-tag">أطيب ما يخرج من البحر</span>
+    </div>
+    <div class="socials" aria-label="وسائل التواصل">
+      <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.snapchat.com/" target="_blank" rel="noopener noreferrer" aria-label="سناب شات"><i class="fab fa-snapchat"></i></a>
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="تيك توك"><i class="fab fa-tiktok"></i></a>
+      <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="إكس"><i class="fab fa-x-twitter"></i></a>
+    </div>
+    <div class="footer-meta">
+      © <span id="y"></span> Twina — جميع الحقوق محفوظة.<br>
+      تصميم بواسطة <span style="color:var(--gold-bright);">Cursor Luxury UI</span> — استبدل الاسم باسمك أو استوديوك.
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="#" id="wa-float" aria-label="تواصل واتساب مع توينا"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+(function() {
+  const WA_NUMBER = '966500000000';
+  const WA_BASE = 'https://wa.me/' + WA_NUMBER;
+
+  function waLink(text) {
+    return WA_BASE + (text ? '?text=' + encodeURIComponent(text) : '');
+  }
+
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const loader = document.getElementById('loader');
+  setTimeout(function() { loader.classList.add('hide'); }, 1500);
+
+  const header = document.getElementById('site-header');
+  function onScrollNav() {
+    header.classList.toggle('solid', window.scrollY > 40);
+  }
+  window.addEventListener('scroll', onScrollNav, { passive: true });
+  onScrollNav();
+
+  document.querySelectorAll('[data-smooth]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      const id = this.getAttribute('href');
+      if (!id || id.charAt(0) !== '#') return;
+      const el = document.querySelector(id);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        closeDrawer();
+      }
+    });
+  });
+
+  const toggle = document.getElementById('menu-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+  function closeDrawer() {
+    toggle.classList.remove('open');
+    drawer.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+  toggle.addEventListener('click', function() {
+    const open = !drawer.classList.contains('open');
+    toggle.classList.toggle('open', open);
+    drawer.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+  });
+  drawer.querySelectorAll('a').forEach(function(l) { l.addEventListener('click', closeDrawer); });
+
+  function setWaHrefs() {
+    const msg = 'مرحباً توينا، أود حجز طاولة في أقرب وقت متاح.';
+    const u = waLink(msg);
+    document.getElementById('hero-wa').href = u;
+    document.getElementById('nav-wa').href = u;
+    document.getElementById('wa-float').href = u;
+  }
+  setWaHrefs();
+
+  document.getElementById('reserve-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('r-name').value.trim();
+    const phone = document.getElementById('r-phone').value.trim();
+    const date = document.getElementById('r-date').value;
+    const time = document.getElementById('r-time').value;
+    const guests = document.getElementById('r-guests').value;
+    if (!name || !phone || !date || !time || !guests) return;
+    const text = [
+      'حجز جديد — Twina',
+      'الاسم: ' + name,
+      'الجوال: ' + phone,
+      'التاريخ: ' + date,
+      'الوقت: ' + time,
+      'عدد الأشخاص: ' + guests
+    ].join('\n');
+    window.open(waLink(text), '_blank', 'noopener,noreferrer');
+  });
+
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panels = { seafood: document.getElementById('panel-seafood'), grill: document.getElementById('panel-grill'), starters: document.getElementById('panel-starters') };
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const tab = btn.getAttribute('data-tab');
+      tabBtns.forEach(function(b) {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      Object.keys(panels).forEach(function(k) {
+        const p = panels[k];
+        if (!p) return;
+        const on = k === tab;
+        p.classList.toggle('active', on);
+        p.hidden = !on;
+      });
+    });
+  });
+
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      if (entry.target.classList.contains('stagger-children')) entry.target.classList.add('is-visible');
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  document.querySelectorAll('.reveal-init').forEach(function(el) { io.observe(el); });
+
+  const track = document.getElementById('carousel-track');
+  const dotsWrap = document.getElementById('carousel-dots');
+  const slides = track.children;
+  let ci = 0;
+  let timer;
+  for (let i = 0; i < slides.length; i++) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'شريحة ' + (i + 1));
+    b.addEventListener('click', function() { go(i); reset(); });
+    dotsWrap.appendChild(b);
+  }
+  const dots = dotsWrap.querySelectorAll('button');
+  function go(i) {
+    ci = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (ci * 100) + '%)';
+    dots.forEach(function(d, j) { d.classList.toggle('active', j === ci); });
+  }
+  function next() { go(ci + 1); }
+  function reset() { clearInterval(timer); timer = setInterval(next, 6000); }
+  go(0);
+  reset();
+
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mq.matches) { clearInterval(timer); }
+})();
+</script>
+</body>
+</html>
